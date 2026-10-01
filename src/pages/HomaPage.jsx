@@ -16,7 +16,7 @@ function HomePage() {
     const [videogames, setVideogames] = useState([]);
 
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL)
+        fetch(import.meta.env.VITE_API_URL_GAMES)
             .then(response => response.json())
             .then(data => {
                 // Prendiamo solo i primi 6 giochi per l'esposizione in home

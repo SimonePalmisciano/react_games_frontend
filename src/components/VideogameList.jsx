@@ -5,7 +5,7 @@ function VideogameList() {
     const [videogames, setVideogames] = useState([]);
 
     useEffect(() => {
-        fetch(import.meta.env.VITE_API_URL)
+        fetch(import.meta.env.VITE_API_URL_GAMES)
             .then(response => {
                 return response.json();
             })
