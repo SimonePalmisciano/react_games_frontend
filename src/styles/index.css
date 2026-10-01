@@ -1,5 +1,28 @@
-.press-start-2p-regular {
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+}
+
+/* font per i titoli */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
 }
+
+/* .press-start-2p-regular {
+    font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+} */
