@@ -7,3 +7,14 @@ successivamente in basso i videogiochi e sotto questa sezione
 una sezione con 3 card in cui si racconta qualcosa della passione dei videogiochi
 e nella creazione del sito web
 */
+
+import VideogameList from "../components/VideogameList"
+
+function HomaPage() {
+    return (
+        <div>
+            <VideogameList />
+        </div>
+    )
+}
+export default HomaPage
