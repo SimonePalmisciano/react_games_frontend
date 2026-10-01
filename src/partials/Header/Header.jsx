@@ -3,11 +3,11 @@ import { NavLink } from "react-router";
 function Header() {
     return (
         <header>
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+            <nav className="navbar navbar-expand-lg shadow-sm">
                 <div className="container">
                     {/* Logo o Brand del sito */}
                     <NavLink className="navbar-brand fw-bold" to="/">
-                        <img src="" alt="" />
+                        <img src="/Logo.png" alt="" />
                     </NavLink>
 
                     {/* Pulsante Hamburger per dispositivi mobili */}

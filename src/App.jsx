@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import HomaPage from "./pages/HomaPage";
+import MainLayout from "./layouts/MainLayout";
 
 
 function App() {
@@ -7,9 +8,9 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* <Route Component={LayoutPage}> */}
+          <Route Component={MainLayout}>
           <Route index Component={HomaPage} />
-          {/* </Route> */}
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
