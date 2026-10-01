@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import VideogameCard from "./Cards/VideogameCard";
 
 function VideogameList() {
     const [videogames, setVideogames] = useState([]);
@@ -18,7 +19,7 @@ function VideogameList() {
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                 {videogames.map((game) => {
                     <div key={game.id} className="col">
-                        
+                        <VideogameCard></VideogameCard>
                     </div>
                 })}
             </div>
