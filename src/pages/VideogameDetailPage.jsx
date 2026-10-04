@@ -104,6 +104,9 @@ function VideogameDetailPage() {
                             <p>
                                 {videogame.description.slice(0, 250) + " ..."}
                             </p>
+                            <p>
+                                Prezzo: {videogame.price}&euro;
+                            </p>
                         </section>
                     </div>
                 </article>
