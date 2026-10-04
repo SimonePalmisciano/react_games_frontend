@@ -42,9 +42,41 @@ function VideogameDetailPage() {
     }, [apiUrlGames, id]);
 
     return (
-        <>
-        
-        </>
+        <main className="container py-5">
+            <Link to="/videogames" className="btn btn-outline-secondary mb-4">
+                &larr; Torna al catalogo
+            </Link>
+
+            {loading ? (
+                <div className="text-center py-5">
+                    <div className="spinner-border text-primary">
+                        <span className="visually-hidden">Caricamento...</span>
+                    </div>
+                    <p className="mt-3 text-muted">Caricamento dei dettagli...</p>
+                </div>
+            ) : error ? (
+                <div className="alert alert-danger">
+                    {error}
+                </div>
+            ) : (
+                <article className="card shadow-sm border-0">
+                    {videogame.cover_image && (
+                        <img
+                            src={videogame.cover_image}
+                            className="card-img-top"
+                            alt={videogame.title || "Copertina del videogioco"}
+                            style={{ maxHeight: "420px", objectFit: "cover" }}
+                        />
+                    )}
+                    <div className="card-body p-4">
+                        <h1 className="card-title mb-4">
+                            {videogame.title || "Dettagli del videogioco"}
+                        </h1>
+
+                    </div>
+                </article>
+            )}
+        </main>
     );
 }
 
