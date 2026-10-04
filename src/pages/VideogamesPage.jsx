@@ -14,9 +14,9 @@ function VideogamesPage() {
     const apiUrlGames = import.meta.env.VITE_API_URL_GAMES;
     const apiUrlGenres = import.meta.env.VITE_API_URL_GENRE;
 
-    console.log('videogiochi:' , videogames);
-    console.log('GENERI:' , genres);
-    
+    // console.log('videogiochi:', videogames);
+    // console.log('GENERI:', genres);
+
 
     // Funzione centralizzata per recuperare i videogiochi (supporta i filtri via query string)
 
@@ -35,7 +35,7 @@ function VideogamesPage() {
             if (!response.ok) throw new Error("Errore nel recupero dei videogiochi");
 
             const data = await response.json();
-            setVideogames(data.data || data);
+            setVideogames(data.response || data);
         } catch (error) {
             console.error("Errore nella ricerca:", error);
         }
@@ -46,10 +46,10 @@ function VideogamesPage() {
         const fetchInitialData = async () => {
             // console.log(apiUrlGames);
             // console.log(apiUrlGenres);
-            
+
             try {
                 const [gamesResponse, genresResponse] = await Promise.all([
-                    
+
                     fetch(apiUrlGames),
                     fetch(apiUrlGenres)
                 ]);
@@ -59,8 +59,8 @@ function VideogamesPage() {
                 const gamesData = await gamesResponse.json();
                 const genresData = await genresResponse.json();
 
-                console.log("gamesData: ", gamesData);
-                console.log("genresData: ", gamesData);
+                // console.log("gamesData: ", gamesData);
+                // console.log("genresData: ", gamesData);
 
                 setVideogames(gamesData.response);
                 setGenres(genresData.response);
@@ -177,7 +177,9 @@ function VideogamesPage() {
                 ) : (
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {videogames.map((game) => (
-                            <VideogameCard key={game.id} game={game} />
+                            <div key={game.id} className="col">
+                                <VideogameCard game={game} />
+                            </div>
                         ))}
                     </div>
                 )}

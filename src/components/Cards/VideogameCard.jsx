@@ -6,8 +6,9 @@ function VideogameCard({game}) {
     return (
         <div className="card h-100 shadow-sm">
             {/* Immagine del videogioco */}
+            {/* {console.log(game)} */}
             <img
-                src={game.image || "https://via.placeholder.com/300x200?text=No+Image"}
+                src={game.cover_image || "https://via.placeholder.com/300x200?text=No+Image"}
                 className="card-img-top"
                 alt={game.title}
                 style={{ height: "200px", objectFit: "cover" }}
