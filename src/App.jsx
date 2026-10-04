@@ -13,7 +13,7 @@ function App() {
           <Route Component={MainLayout}>
             <Route index Component={HomaPage} />
             <Route path="/videogames" Component={VideogamesPage} />
-            <Route path="/videogames/{id}" Component={VideogameDetailPage} />
+            <Route path="/videogames/:id" Component={VideogameDetailPage} />
           </Route>
         </Routes>
       </BrowserRouter>
