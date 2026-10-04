@@ -8,6 +8,22 @@ function VideogameDetailPage() {
     const [error, setError] = useState("");
     const apiUrlGames = import.meta.env.VITE_API_URL_GAMES;
 
+    console.log(videogame);
+
+    function getFormattedDate() {
+        const rowDate = videogame.release_date;
+        const dateObj = new Date(rowDate);
+        const formattedDateIt = dateObj.toLocaleDateString('it-IT');
+        // Formato esteso personalizzato: "17 settembre 2013"
+        const formattedDateLong = dateObj.toLocaleDateString('it-IT', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        });
+
+        return formattedDateIt;
+    }
+
     useEffect(() => {
 
         const fetchVideogame = async () => {
@@ -72,7 +88,23 @@ function VideogameDetailPage() {
                         <h1 className="card-title mb-4">
                             {videogame.title || "Dettagli del videogioco"}
                         </h1>
-
+                        <h6>
+                            Casa Produttrice: {videogame.developer}
+                        </h6>
+                        <h6>
+                            Genere: {videogame.genre.name}
+                        </h6>
+                        <p>
+                            Data di uscita: {getFormattedDate()}
+                        </p>
+                        <section className="detail">
+                            <p>
+                                Descrizione
+                            </p>
+                            <p>
+                                {videogame.description.slice(0, 250) + " ..."}
+                            </p>
+                        </section>
                     </div>
                 </article>
             )}
