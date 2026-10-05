@@ -4,7 +4,7 @@ import Footer from "../partials/Footer/Footer.jsx";
 
 function MainLayout() {
     return (
-        <div className="d-flex flex-column min-vh-100">
+        <div className="d-flex flex-column min-vh-100 bg-main">
             <Header />
 
             <main className="flex-grow-1">
