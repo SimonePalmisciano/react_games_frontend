@@ -26,41 +26,45 @@ function HomePage() {
     }, []);
 
     return (
-        <div>
+        <div className="">
             {/* 1. Banner iniziale in alto sotto la navbar */}
-            <div className="p-5 mb-5 text-center shadow">
-                <div className="container-fluid py-4">
-                    <h1 className="display-4 fw-bold">
-                        Benvenuti nel Catalogo Videogiochi
-                    </h1>
-                    <p className="col-md-8 fs-5 mx-auto text-secondary">
-                        Esplora i migliori titoli, scopri nuove avventure e vivi la tua passione senza limiti.
-                    </p>
+            <div className="text-center shadow">
+                <div className="container">
+                    <div className="bg-white rounded-top py-5 mt-5">
+                        <h1 className="display-4 fw-bold">
+                            Benvenuti nel Catalogo Videogiochi
+                        </h1>
+                        <p className="col-md-8 fs-5 mx-auto text-secondary">
+                            Esplora i migliori titoli, scopri nuove avventure e vivi la tua passione senza limiti.
+                        </p>
+                    </div>
                 </div>
             </div>
 
             {/* 2. Sezione Videogiochi in esposizione (Massimo 6 card) */}
-            <div className="container mb-5">
-                <div className="d-flex justify-content-between align-items-center mb-4">
-                    <h2>
-                        Videogiochi in Evidenza
-                    </h2>
-                    <Link to="/videogames" className="btn btn-outline-primary">
-                        Esplora altri giochi &raquo;
-                    </Link>
-                </div>
+            <div className="container">
+                <div className="bg-white rounded-bottom py-5">
+                    <div className="d-flex justify-content-between align-items-center mb-4">
+                        <h2>
+                            Videogiochi in Evidenza
+                        </h2>
+                        <Link to="/videogames" className="btn btn-outline-primary">
+                            Esplora altri giochi &raquo;
+                        </Link>
+                    </div>
 
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    {videogames.map((game) => (
-                        <div key={game.id} className="col">
-                            <VideogameCard game={game} />
-                        </div>
-                    ))}
-                </div>
-                <div className="btn-container d-flex justify-content-center my-3">
-                    <Link to="/videogames" className="btn btn-primary btn-lg mt-3">
-                        Vai al catalogo completo
-                    </Link>
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        {videogames.map((game) => (
+                            <div key={game.id} className="col">
+                                <VideogameCard game={game} />
+                            </div>
+                        ))}
+                    </div>
+                    <div className="btn-container d-flex justify-content-center my-3">
+                        <Link to="/videogames" className="btn btn-primary btn-lg mt-3">
+                            Vai al catalogo completo
+                        </Link>
+                    </div>
                 </div>
             </div>
 

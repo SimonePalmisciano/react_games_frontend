@@ -76,7 +76,7 @@ function VideogamesPage() {
         fetchInitialData();
     }, [apiUrlGames, apiUrlGenres]);
 
-    // Gestore dell'invio del form (esattamente come nel tuo componente SearchBar)
+    // Gestore dell'invio del form
     const submitHandler = (event) => {
         event.preventDefault();
         fetchFilteredVideogames(searchTitle, selectedGenre, searchReleaseDate);
@@ -105,69 +105,75 @@ function VideogamesPage() {
         <>
             <div className="container py-5">
                 {/* Titolo della Pagina */}
-                <h1 className="mb-4 text-center">Catalogo Videogiochi</h1>
+                <div className="bg-white rounded-top py-3">
+                    <h1 className="mb-4 text-center">
+                        Catalogo Videogiochi
+                    </h1>
 
-                {/* Sezione Filtri strutturata come Form (ispirata alla tua SearchBar) */}
-                <div className="card shadow-sm p-4 mb-5 bg-light border-0">
-                    <h5 className="mb-3 text-secondary">Filtra la ricerca</h5>
-                    <form onSubmit={submitHandler}>
-                        <div className="row g-3">
-                            {/* Filtro per Nome */}
-                            <div className="col-md-4">
-                                <label htmlFor="searchTitle" className="form-label fw-bold">Nome Videogioco</label>
-                                <input
-                                    type="text"
-                                    id="searchTitle"
-                                    className="form-control"
-                                    placeholder="Cerca per titolo..."
-                                    value={searchTitle}
-                                    onChange={(event) => setSearchTitle(event.target.value)}
-                                />
+                    {/* Sezione Filtri strutturata come Form (ispirata alla tua SearchBar) */}
+                    <div className="card p-4 border-0">
+                        <h5 className="mb-3 text-secondary">Filtra la ricerca</h5>
+                        <form onSubmit={submitHandler}>
+                            <div className="row g-3">
+                                {/* Filtro per Nome */}
+                                <div className="col-md-4">
+                                    <label htmlFor="searchTitle" className="form-label fw-bold">Nome Videogioco</label>
+                                    <input
+                                        type="text"
+                                        id="searchTitle"
+                                        className="form-control"
+                                        placeholder="Cerca per titolo..."
+                                        value={searchTitle}
+                                        onChange={(event) => setSearchTitle(event.target.value)}
+                                    />
+                                </div>
+
+                                {/* Filtro per Genere */}
+                                <div className="col-md-4">
+                                    <label htmlFor="selectGenre" className="form-label fw-bold">Genere</label>
+                                    <select
+                                        id="selectGenre"
+                                        className="form-select"
+                                        value={selectedGenre}
+                                        onChange={(event) => setSelectedGenre(event.target.value)}
+                                    >
+                                        <option value="">Tutti i generi</option>
+                                        {genres.map((genre) => (
+                                            <option key={genre.id} value={genre.id}>
+                                                {genre.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                </div>
+
+                                {/* Filtro per Data di Uscita */}
+                                <div className="col-md-4">
+                                    <label htmlFor="searchDate" className="form-label fw-bold">Data / Anno di Uscita</label>
+                                    <input
+                                        type="text"
+                                        id="searchDate"
+                                        className="form-control"
+                                        placeholder="Es. 2026 o 2026-06"
+                                        value={searchReleaseDate}
+                                        onChange={(event) => setSearchReleaseDate(event.target.value)}
+                                    />
+                                </div>
                             </div>
 
-                            {/* Filtro per Genere */}
-                            <div className="col-md-4">
-                                <label htmlFor="selectGenre" className="form-label fw-bold">Genere</label>
-                                <select
-                                    id="selectGenre"
-                                    className="form-select"
-                                    value={selectedGenre}
-                                    onChange={(event) => setSelectedGenre(event.target.value)}
-                                >
-                                    <option value="">Tutti i generi</option>
-                                    {genres.map((genre) => (
-                                        <option key={genre.id} value={genre.id}>
-                                            {genre.name}
-                                        </option>
-                                    ))}
-                                </select>
+                            {/* Bottoni di Invio e Reset */}
+                            <div className="mt-4 d-flex gap-2 justify-content-end">
+                                <button type="button" className="btn btn-outline-secondary" onClick={handleReset}>
+                                    Reset
+                                </button>
+                                <button type="submit" className="btn btn-dark">
+                                    Cerca
+                                </button>
                             </div>
-
-                            {/* Filtro per Data di Uscita */}
-                            <div className="col-md-4">
-                                <label htmlFor="searchDate" className="form-label fw-bold">Data / Anno di Uscita</label>
-                                <input
-                                    type="text"
-                                    id="searchDate"
-                                    className="form-control"
-                                    placeholder="Es. 2026 o 2026-06"
-                                    value={searchReleaseDate}
-                                    onChange={(event) => setSearchReleaseDate(event.target.value)}
-                                />
-                            </div>
-                        </div>
-
-                        {/* Bottoni di Invio e Reset */}
-                        <div className="mt-4 d-flex gap-2 justify-content-end">
-                            <button type="button" className="btn btn-outline-secondary" onClick={handleReset}>
-                                Reset
-                            </button>
-                            <button type="submit" className="btn btn-dark">
-                                Cerca
-                            </button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
+                    <hr />
                 </div>
+
 
                 {/* Sezione Griglia Card Videogiochi */}
                 {videogames.length === 0 ? (
@@ -175,12 +181,14 @@ function VideogamesPage() {
                         Nessun videogioco trovato con i parametri selezionati.
                     </div>
                 ) : (
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                        {videogames.map((game) => (
-                            <div key={game.id} className="col">
-                                <VideogameCard game={game} />
-                            </div>
-                        ))}
+                    <div className="bg-white rounded-bottom py-4">
+                        <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            {videogames.map((game) => (
+                                <div key={game.id} className="col">
+                                    <VideogameCard game={game} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )}
             </div>
