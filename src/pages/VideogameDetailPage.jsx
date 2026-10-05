@@ -6,9 +6,8 @@ function VideogameDetailPage() {
     const [videogame, setVideogame] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [showFullDescription, setShowFullDescription] = useState(false);
     const apiUrlGames = import.meta.env.VITE_API_URL_GAMES;
-
-    console.log(videogame);
 
     function getFormattedDate() {
         const rowDate = videogame.release_date;
@@ -42,6 +41,7 @@ function VideogameDetailPage() {
                 // console.log("risposta della chiamata", data.response);
 
                 setVideogame(data.response);
+                setShowFullDescription(false);
 
             } catch (fetchError) {
                 if (fetchError.name !== "AbortError") {
@@ -56,6 +56,10 @@ function VideogameDetailPage() {
         fetchVideogame();
 
     }, [apiUrlGames, id]);
+
+    const description = videogame?.description || "";
+    const isLongDescription = description.length > 250;
+    const visibleDescription = showFullDescription ? description : `${description.slice(0, 250)}${isLongDescription ? "..." : ""}`;
 
     return (
         <main className="container py-5">
@@ -81,7 +85,7 @@ function VideogameDetailPage() {
                             src={videogame.cover_image}
                             className="card-img-top"
                             alt={videogame.title || "Copertina del videogioco"}
-                            style={{ maxHeight: "420px", objectFit: "cover" }}
+                            style={{ maxHeight: "550px", objectFit: "cover" }}
                         />
                     )}
                     <div className="card-body p-4">
@@ -102,7 +106,16 @@ function VideogameDetailPage() {
                                 Descrizione
                             </p>
                             <p>
-                                {videogame.description.slice(0, 250) + " ..."}
+                                {visibleDescription}
+                                {isLongDescription && (
+                                    <button
+                                        type="button"
+                                        className="btn btn-link p-0 ms-1 align-baseline"
+                                        onClick={() => setShowFullDescription((prev) => !prev)}
+                                    >
+                                        {showFullDescription ? "Mostra meno" : "Mostra altro"}
+                                    </button>
+                                )}
                             </p>
                             <p>
                                 Prezzo: {videogame.price}&euro;
