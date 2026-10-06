@@ -32,7 +32,7 @@ function HomePage() {
                 <div className="container">
                     <div className="bg-white rounded-top py-5 mt-5">
                         <h1 className="display-4 fw-bold">
-                            Benvenuti nel Catalogo Videogiochi
+                            Benvenuti in GamesGames
                         </h1>
                         <p className="col-md-8 fs-5 mx-auto text-secondary">
                             Esplora i migliori titoli, scopri nuove avventure e vivi la tua passione senza limiti.
@@ -43,7 +43,7 @@ function HomePage() {
 
             {/* 2. Sezione Videogiochi in esposizione (Massimo 6 card) */}
             <div className="container">
-                <div className="bg-white rounded-bottom py-5">
+                <div className="bg-white rounded-bottom py-5 px-2">
                     <div className="d-flex justify-content-between align-items-center mb-4">
                         <h2>
                             Videogiochi in Evidenza

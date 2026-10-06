@@ -181,7 +181,7 @@ function VideogamesPage() {
                         Nessun videogioco trovato con i parametri selezionati.
                     </div>
                 ) : (
-                    <div className="bg-white rounded-bottom py-4">
+                    <div className="bg-white rounded-bottom py-4 px-2">
                         <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                             {videogames.map((game) => (
                                 <div key={game.id} className="col">
